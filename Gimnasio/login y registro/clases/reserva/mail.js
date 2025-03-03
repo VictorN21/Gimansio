@@ -7,13 +7,13 @@ const firebaseConfig = {
   messagingSenderId: "737345422248",
   appId: "1:737345422248:web:e59554ae93c2b038df139d"
 };
-
+// initialize firebase
 firebase.initializeApp(firebaseConfig);
 
+// reference your database
+var contactFormDB = firebase.database().ref("reserForm");
 
-var contactFormDB = firebase.database().ref("contactForm");
-
-document.getElementById("contactForm").addEventListener("submit", submitForm);
+document.getElementById("reserForm").addEventListener("submit", submitForm);
 
 function submitForm(e) {
   e.preventDefault();
@@ -24,16 +24,16 @@ function submitForm(e) {
 
   saveMessages(name, emailid, msgContent);
 
- 
+  //   enable alert
   document.querySelector(".alert").style.display = "block";
 
-
+  //   remove the alert
   setTimeout(() => {
     document.querySelector(".alert").style.display = "none";
   }, 3000);
 
-  
-  document.getElementById("contactForm").reset();
+  //   reset the form
+  document.getElementById("reserForm").reset();
 }
 
 const saveMessages = (name, emailid, msgContent) => {
