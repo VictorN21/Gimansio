@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/Gimnasio/logo.png">
+  <title>Mapa Muscular Interactivo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f4f4f4;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin-top: 30px;
+      position: relative;
+    }
+    .image-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+    .hotspot {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 2px solid red;
+      border-radius: 50%;
+      cursor: pointer;
+      background-color: rgba(255, 0, 0, 0.3);
+    }
+    #info-box {
+      margin-top: 30px;
+      background: white;
+      padding: 20px;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+
+<h1>Mapa Muscular Interactivo</h1>
+<p>Haz clic en un músculo para ver información y ejercicios.</p>
+
+<div class="container">
+  <div class="image-wrapper">
+    <img src="delante.jpg" alt="Vista Frontal" width="300">
+    <!-- Ejemplo de puntos interactivos frontales -->
+    <div class="hotspot" style="top: 150px; left: 120px;" onclick="mostrarInfo('Pectoral mayor')"></div>
+    <div class="hotspot" style="top: 180px; left: 70px;" onclick="mostrarInfo('Bíceps braquial')"></div>
+    <div class="hotspot" style="top: 220px; left: 150px;" onclick="mostrarInfo('Recto abdominal')"></div>
+    <div class="hotspot" style="top: 350px; left: 110px;" onclick="mostrarInfo('Cuádriceps')"></div>
+  </div>
+
+  <div class="image-wrapper">
+    <img src="detras.jpg" alt="Vista Trasera" width="300">
+    <!-- Ejemplo de puntos interactivos traseros -->
+    <div class="hotspot" style="top: 100px; left: 130px;" onclick="mostrarInfo('Trapecio')"></div>
+    <div class="hotspot" style="top: 130px; left: 100px;" onclick="mostrarInfo('Dorsal ancho')"></div>
+    <div class="hotspot" style="top: 185px; left: 45px;" onclick="mostrarInfo('Tríceps')"></div>
+    <div class="hotspot" style="top: 280px; left: 110px;" onclick="mostrarInfo('Glúteo mayor')"></div>
+    <div class="hotspot" style="top: 350px; left: 100px;" onclick="mostrarInfo('Isquiotibiales')"></div>
+  </div>
+</div>
+
+<div id="info-box">
+  <h2 id="musculo-nombre">Selecciona un músculo</h2>
+  <p id="musculo-info">Aquí aparecerá la información del músculo y ejercicios recomendados.</p>
+</div>
+
+<script>
+  const info = {
+    "Pectoral mayor": "Ejercicios: Press de banca, aperturas con mancuernas, fondos en paralelas.",
+    "Bíceps braquial": "Ejercicios: Curl con barra, curl con mancuernas, curl martillo.",
+    "Recto abdominal": "Ejercicios: Crunch, elevación de piernas, planchas.",
+    "Cuádriceps": "Ejercicios: Sentadillas, prensa de piernas, zancadas.",
+    "Trapecio": "Ejercicios: Encogimientos, remo al cuello, peso muerto.",
+    "Dorsal ancho": "Ejercicios: Dominadas, jalones al pecho, remo con barra.",
+    "Tríceps": "Ejercicios: Fondos, press francés, extensiones con cuerda.",
+    "Glúteo mayor": "Ejercicios: Hip thrust, sentadillas profundas, peso muerto rumano.",
+    "Isquiotibiales": "Ejercicios: Curl femoral, peso muerto rumano, puente de glúteos."
+  };
+
+  function mostrarInfo(musculo) {
+    document.getElementById("musculo-nombre").innerText = musculo;
+    document.getElementById("musculo-info").innerText = info[musculo] || "Ejercicios no disponibles.";
+  }
+</script>
+
+</body>
+</html>

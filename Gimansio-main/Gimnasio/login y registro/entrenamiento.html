@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/Gimnasio/logo.png">
+<title>Tipos de Rutinas</title>
+<style>
+  /* Reset básico */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #000000, #ff0000);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .container {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    animation: fadeIn 1s ease;
+  }
+
+  h1 {
+    text-align: center;
+    color: red;
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-weight: bold;
+    margin-top: 15px;
+    display: block;
+    color: #333;
+  }
+
+  select, button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
+  }
+
+  select:focus, button:hover {
+    border-color: black;
+    outline: none;
+  }
+
+  button {
+    background: black;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+  }
+
+  button:hover {
+    background: red;
+  }
+
+  .resultado {
+    background: #ecf0f1;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    white-space: pre-line;
+    transition: all 0.5s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px);}
+    to { opacity: 1; transform: translateY(0);}
+  }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Tipos de Rutinas</h1>
+
+  <label for="dias">Selecciona tus días de entrenamiento:</label>
+  <select id="dias">
+    <option value="">-- Elige una opción --</option>
+    <option value="2">2 días</option>
+    <option value="3">3 días</option>
+    <option value="4">4 días</option>
+    <option value="5">5 días</option>
+    <option value="6">6 días</option>
+  </select>
+
+  <label for="objetivo">Selecciona tu objetivo:</label>
+  <select id="objetivo">
+    <option value="">-- Elige un objetivo --</option>
+    <option value="fuerza">Fuerza</option>
+    <option value="hipertrofia">Hipertrofia</option>
+    <option value="resistencia">Resistencia</option>
+  </select>
+
+  <button onclick="mostrarRutina()">Mostrar Rutina</button>
+
+  <div class="resultado" id="resultado"></div>
+</div>
+
+<script>
+const rutinas = {
+  "2": {
+    "fuerza": "Full Body 2 días (Fuerza)\n\n- Sentadillas 4x5\n- Press banca 4x5\n- Remo 4x5\n- Press militar 3x6\n- Curl bíceps 3x8\n- Extensión tríceps 3x8\n- Abdominales 3x15",
+    "hipertrofia": "Full Body 2 días (Hipertrofia)\n\n- Sentadillas 3x10\n- Press banca 3x10\n- Remo 3x10\n- Press militar 3x10\n- Curl bíceps 2x12\n- Extensión tríceps 2x12\n- Abdominales 3x15",
+    "resistencia": "Full Body 2 días (Resistencia)\n\n- Sentadillas 3x15\n- Press banca 3x15\n- Remo 3x15\n- Press militar 3x15\n- Curl bíceps 2x20\n- Extensión tríceps 2x20\n- Abdominales 3x25"
+  },
+  "3": {
+    "fuerza": "Push/Pull/Legs 3 días (Fuerza)\n\nDía 1 – Push\n- Press banca 5x5\n- Press militar 4x6\n- Fondos 4x6\n\nDía 2 – Pull\n- Peso muerto 4x5\n- Dominadas 4x6\n- Remo 4x5\n\nDía 3 – Legs\n- Sentadilla 5x5\n- Prensa 4x6\n- Elevación de pantorrillas 3x12",
+    "hipertrofia": "Push/Pull/Legs 3 días (Hipertrofia)\n\nDía 1 – Push: Press banca 4x8, Press militar 3x10, Fondos 3x12\nDía 2 – Pull: Remo 4x8, Jalón 3x10, Curl bíceps 3x12\nDía 3 – Legs: Sentadillas 4x10, Peso muerto rumano 3x12, Elevación de pantorrillas 3x15",
+    "resistencia": "Push/Pull/Legs 3 días (Resistencia)\n\nDía 1 – Push: Press banca 3x15, Fondos 3x15\nDía 2 – Pull: Remo 3x15, Jalón 3x15\nDía 3 – Legs: Sentadilla 3x20, Elevación de pantorrillas 3x25"
+  },
+  "4": {
+    "fuerza": "Upper/Lower 4 días (Fuerza)\nDía 1 – Upper: Press banca 5x5, Remo 5x5\nDía 2 – Lower: Sentadilla 5x5, Peso muerto rumano 4x6\nDía 3 – Upper: Press militar 4x6, Dominadas 4x6\nDía 4 – Lower: Prensa 4x6, Elevación de pantorrillas 3x12",
+    "hipertrofia": "Upper/Lower 4 días (Hipertrofia)\nDía 1 – Upper: Press banca 4x8, Remo 4x10\nDía 2 – Lower: Sentadilla 4x10, Peso muerto rumano 3x12\nDía 3 – Upper: Press militar 3x10, Jalón 3x12\nDía 4 – Lower: Prensa 3x12, Elevación de pantorrillas 3x15",
+    "resistencia": "Upper/Lower 4 días (Resistencia)\nDía 1 – Upper: Press banca 3x15, Remo 3x15\nDía 2 – Lower: Sentadilla 3x20, Peso muerto rumano 3x15\nDía 3 – Upper: Press militar 3x15, Jalón 3x15\nDía 4 – Lower: Prensa 3x20, Elevación de pantorrillas 3x25"
+  },
+  "5": {
+    "fuerza": "Split 5 días (Fuerza)\nDía 1 – Pecho: Press banca 5x5, Fondos 4x6\nDía 2 – Espalda: Peso muerto 5x5, Dominadas 4x6\nDía 3 – Piernas: Sentadilla 5x5, Prensa 4x6\nDía 4 – Hombros: Press militar 4x6, Elevaciones laterales 3x8\nDía 5 – Brazos: Curl bíceps 3x6, Extensión tríceps 3x6",
+    "hipertrofia": "Split 5 días (Hipertrofia)\nDía 1 – Pecho: Press banca 4x8, Aperturas 3x12\nDía 2 – Espalda: Remo 4x8, Jalón 3x10\nDía 3 – Piernas: Sentadilla 4x10, Peso muerto rumano 3x12\nDía 4 – Hombros: Press militar 3x10, Elevaciones laterales 3x12\nDía 5 – Brazos: Curl bíceps 3x12, Extensión tríceps 3x12",
+    "resistencia": "Split 5 días (Resistencia)\nDía 1 – Pecho: Press banca 3x15, Aperturas 3x15\nDía 2 – Espalda: Remo 3x15, Jalón 3x15\nDía 3 – Piernas: Sentadilla 3x20, Prensa 3x20\nDía 4 – Hombros: Press militar 3x15, Elevaciones laterales 3x15\nDía 5 – Brazos: Curl bíceps 3x20, Extensión tríceps 3x20"
+  },
+  "6": {
+    "fuerza": "Push/Pull/Legs doble 6 días (Fuerza)\nDía 1 – Push: Press banca 5x5, Press militar 4x6\nDía 2 – Pull: Peso muerto 5x5, Remo 4x6\nDía 3 – Legs: Sentadilla 5x5, Prensa 4x6\nDía 4 – Push: Fondos 4x6, Elevaciones laterales 3x8\nDía 5 – Pull: Dominadas 4x6, Curl bíceps 3x6\nDía 6 – Legs: Peso muerto rumano 4x6, Elevación de pantorrillas 3x12",
+    "hipertrofia": "Push/Pull/Legs doble 6 días (Hipertrofia)\nDía 1 – Push: Press banca 4x8, Press militar 3x10\nDía 2 – Pull: Remo 4x8, Jalón 3x10\nDía 3 – Legs: Sentadilla 4x10, Peso muerto rumano 3x12\nDía 4 – Push: Fondos 3x12, Elevaciones laterales 3x12\nDía 5 – Pull: Curl bíceps 3x12, Remo mancuernas 3x10\nDía 6 – Legs: Prensa 3x12, Elevación de pantorrillas 3x15",
+    "resistencia": "Push/Pull/Legs doble 6 días (Resistencia)\nDía 1 – Push: Press banca 3x15, Fondos 3x15\nDía 2 – Pull: Remo 3x15, Jalón 3x15\nDía 3 – Legs: Sentadilla 3x20, Elevación pantorrillas 3x25\nDía 4 – Push: Press militar 3x15, Elevaciones laterales 3x15\nDía 5 – Pull: Curl bíceps 3x20, Remo mancuernas 3x15\nDía 6 – Legs: Prensa 3x20, Peso muerto rumano 3x15"
+  }
+};
+
+function mostrarRutina() {
+  const dias = document.getElementById('dias').value;
+  const objetivo = document.getElementById('objetivo').value;
+  const resultado = document.getElementById('resultado');
+
+  if(dias && objetivo && rutinas[dias] && rutinas[dias][objetivo]){
+    resultado.textContent = rutinas[dias][objetivo];
+  } else {
+    resultado.textContent = "Por favor, selecciona una opción válida para días y objetivo.";
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="/Gimnasio/logo.png">
+<title>Detector de Nivel Gym</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap');
+
+    :root {
+        --accent: #6a5cff;
+        --accent2: #9a8bff;
+        --accent-dark: #4637d8;
+        --bg: #0f0f14;
+        --card: #1a1a22;
+        --muted: #a5a5b5;
+        --radius: 20px;
+        --shadow-strong: 0 25px 60px rgba(0,0,0,0.4);
+        --shadow-soft: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        background: var(--bg);
+        display: flex;
+        justify-content: center;
+        padding: 60px;
+        color: white;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1250px;
+        background: var(--card);
+        padding: 50px;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-strong);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255,255,255,0.05);
+        animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(25px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+        grid-column: span 2;
+        text-align: center;
+        font-size: 48px;
+        font-weight: 900;
+        margin-bottom: 10px;
+        background: linear-gradient(90deg, var(--accent), var(--accent2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    label {
+        display: block;
+        margin-top: 25px;
+        font-size: 19px;
+        font-weight: 600;
+        color: #e5e5e5;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    select, input {
+        width: 100%;
+        padding: 16px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 14px;
+        font-size: 17px;
+        background: #23232d;
+        color: white;
+        transition: 0.2s;
+        box-shadow: inset 0 0 0 1px #333;
+    }
+
+    select:focus, input:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px var(--accent);
+    }
+
+    button {
+        width: 100%;
+        padding: 15px;
+        margin-top: 35px;
+        font-size: 20px;
+        font-weight: 700;
+        border: none;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        color: white;
+        border-radius: 14px;
+        cursor: pointer;
+        transition: 0.25s;
+        letter-spacing: 0.5px;
+        box-shadow: var(--shadow-soft);
+    }
+
+    .btn {
+        background: linear-gradient(90deg, #8a7ef0, #a68afc);
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        padding: 15px 235px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+        text-decoration: none;
+    }
+
+  .btn:hover {
+    background: linear-gradient(90deg, #7a6bf0, #967afc);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  }
+
+   .btn:active {
+    background: linear-gradient(90deg, #7a6bf0, #967afc);
+    transform: translateY(0);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  }
+
+
+    button:hover { transform: translateY(-3px); }
+    button:active { transform: translateY(0); }
+
+    .result-card {
+        background: #13131a;
+        border-radius: var(--radius);
+        padding: 45px;
+        text-align: center;
+        min-height: 380px;
+        box-shadow: var(--shadow-soft);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: 1px solid rgba(255,255,255,0.08);
+        animation: fadeIn 0.6s ease;
+    }
+
+    .level {
+        font-size: 84px;
+        font-weight: 900;
+        margin-top: 16px;
+        text-transform: uppercase;
+        background: linear-gradient(90deg, var(--accent), var(--accent2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 2px;
+    }
+
+    .percentage {
+        font-size: 34px;
+        margin-top: 16px;
+        font-weight: 700;
+        color: #ffffff;
+        opacity: 0.9;
+    }
+
+    .desc {
+        margin-top: 28px;
+        font-size: 20px;
+        color: var(--muted);
+        line-height: 1.7;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+
+    <h1>Detector de Nivel de Gimnasio</h1>
+
+    <div>
+        <label>¿Cuánto tiempo llevas entrenando?</label>
+        <select id="tiempo">
+            <option value="1">Menos de 6 meses</option>
+            <option value="2">6 meses - 2 años</option>
+            <option value="3">Más de 2 años</option>
+        </select>
+
+        <label>¿Cómo calificas tu técnica?</label>
+        <select id="tecnica">
+            <option value="1">Básica</option>
+            <option value="2">Buena</option>
+            <option value="3">Excelente</option>
+        </select>
+
+        <label>Frecuencia semanal de entrenamiento</label>
+        <select id="frecuencia">
+            <option value="1">1 - 2 días</option>
+            <option value="2">3 - 4 días</option>
+            <option value="3">5+ días</option>
+        </select>
+
+        <label>¿Llevas un registro de cargas?</label>
+        <select id="registro">
+            <option value="1">No</option>
+            <option value="2">A veces</option>
+            <option value="3">Sí</option>
+        </select>
+
+        <button onclick="calcularNivel()">Calcular Nivel</button>
+        <p></p>
+        <a href="entrenamiento.html" class="btn">Entrenamiento</a>
+    </div>
+
+    <div class="result-card" id="resultado">
+        <h2>Resultado</h2>
+        <div class="level">---</div>
+        <div class="percentage">---</div>
+        <div class="desc">Completa el formulario para ver tu nivel.</div>
+    </div>
+
+</div>
+
+<script>
+function calcularNivel() {
+    const t = parseInt(document.getElementById("tiempo").value);
+    const te = parseInt(document.getElementById("tecnica").value);
+    const f = parseInt(document.getElementById("frecuencia").value);
+    const r = parseInt(document.getElementById("registro").value);
+
+    const total = t + te + f + r;
+    const max = 12;
+    const porcentaje = Math.round((total / max) * 100);
+
+    let nivel = "";
+
+    if (total <= 5) nivel = "Novato";
+    else if (total <= 9) nivel = "Intermedio";
+    else nivel = "Experto";
+
+    document.querySelector('.level').textContent = nivel;
+    document.querySelector('.percentage').textContent = porcentaje + "%";
+    document.querySelector('.desc').textContent =
+        nivel === "Novato" ? "Estás comenzando, sigue construyendo tu base técnica." :
+        nivel === "Intermedio" ? "Tienes buen control y progresión, ¡vas por gran camino!" :
+        "Dominio avanzado del entrenamiento. Consistencia y técnica top.";
+}
+</script>
+
+</body>
+</html>

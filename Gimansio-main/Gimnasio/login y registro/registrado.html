@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/Gimnasio/login y registro/esti.css">
+    <link rel="icon" href="/Gimnasio/logo.png">
+    <title>Forgue Titans</title>
+</head>
+<body>
+    <section id="inicio">
+    </section>
+    <!-- MENU -->
+    <div class="contenedor-header">
+        <header>
+            <h1><span class="txtRojo">FORGUE</span>TITANS</h1>
+            <nav id="nav">
+                <a href="rutinas.html" onclick="seleccionar()">Rutinas</a>
+                <a href="#servicios" onclick="seleccionar()">Servicios</a>
+                <a href="#galeria" onclick="seleccionar()">Galería</a>
+                <a href="#equipo" onclick="seleccionar()">Equipo</a>
+                <a href="/Gimnasio/imcs/imc.html" onclick="seleccionar()">IMC</a>
+                <a href="#membresia" onclick="seleccionar()">Membresia</a>
+                <a href="blog.html" target="_blank" onclick="seleccionar()">Blog</a>
+                <a href="/Gimnasio/contacto/index.html" target="_blank" onclick="seleccionar()">Contacto</a>
+                <a href="/Gimnasio/login y registro/cuerpo.html" target="_blank" onclick="seleccionar()">Mapa Muscular</a>
+                <button>
+                <a href="/Gimnasio/login y registro/index.html" target="_blank" onclick="seleccionar()">Cerrar Sesion</a>
+                </button>
+            </nav>
+             <!-- Icono del menu responsive -->
+            <div id="icono-nav" class="nav-responsive" onclick="mostrarOcultarMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>               
+        </header>
+    </div>
+
+    <!-- SECCION INICIO -->
+    <section id="inicio" class="inicio">
+        <div class="contenido-seccion">
+            <div class="info">
+                <h2>FORJATE AL <span class="txtRojo">MÁXIMO</span></h2>
+                <p>Triunfar es más facil de lo que piensas!</p>
+                <a href="#servicios" class="btn-mas">
+                    <i class="fa-solid fa-circle-chevron-down"></i>
+                </a>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCION SERVICIOS -->
+    <section class="servicios" id="servicios">
+        <div class="contenido-seccion">
+            <div class="fila">
+                <div class="col">
+                    <div class="contenedor-titulo">
+                        <div class="numero">
+                            01
+                        </div>
+                        <div class="info">
+                            <span class="frase">LA MEJOR EXPERIENCIA</span>
+                            <h2>SERVICIOS</h2>
+                        </div>
+                    </div>
+                    <p class="p-especial">Nuestros Servicios.</p>
+                    <p>En Forgue Titans, nos dedicamos a ofrecerte una experiencia integral de fitness adaptada a tus necesidades. Nuestros entrenadores certificados están disponibles para crear planes de entrenamiento personalizados que te ayudarán a alcanzar tus objetivos.
+
+                        Además, contamos con una variedad de clases grupales dinámicas, desde yoga y pilates hasta HIIT y spinning, donde podrás disfrutar de la energía de un ambiente comunitario. Nuestra zona de pesas y máquinas de última generación está diseñada para todos los niveles de habilidad, lo que te permite entrenar de manera efectiva.
+                        
+                        Para complementar tu entrenamiento, ofrecemos asesoría nutricional que te guiará en el camino hacia una alimentación equilibrada y saludable. Y para esos momentos de recuperación, nuestra área de relajación cuenta con sauna y opciones de terapia muscular, asegurando que tu cuerpo esté en óptimas condiciones.
+                        
+                        Te invitamos a visitarnos y descubrir todo lo que Forgue Titans puede ofrecerte en tu viaje hacia un estilo de vida más saludable..</p>
+                </div>
+                <div class="col">
+                    <img src="/img/servicios.png" alt="">
+                </div>
+                    <button>
+                        <a href="/Gimnasio/login y registro/clases/horario.html" text-decoration: none;>                  
+                        <span class="shadow"></span>
+                        <span class="edge"></span>
+                         <span class="front text"> Horario</a></span>
+                    </button>
+            </div>
+        </div>
+        <div class="info-servicios">
+            <table>
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-person-walking"></i>
+                        <a href="clases/Fitness.html"><h3><span class="txtRojo">Clases </span> de Fitness</h3>
+                    </td>
+                    <td>
+                        <i class="fa-solid fa-dumbbell"></i>
+                        <a href="clases/Crossfit.html"><h3></h3><h3><span class="txtRojo">Clases </span> de Crossfit</h3>
+                    </td>
+                    <td>
+                        <i class="fa-solid fa-mitten"></i>
+                        <a href="clases/Boxeo.html"><h3></h3><h3><span class="txtRojo">Clases </span> de Boxeo</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-clock"></i>
+                        <a href="clases/Cardio.html"><h3><h3><span class="txtRojo">Clases </span> de Cardio</h3>
+                    </td>
+                    <td>
+                        <i class="fa-solid fa-heart-circle-bolt"></i>
+                        <a href="clases/Pilates.html"><h3></h3><h3><span class="txtRojo">Clases </span> de Pilates</h3>
+                    </td>
+                    <td>
+                        <i class="fa-solid fa-bicycle"></i>
+                        <a href="clases/Ciclismo.html"><h3></h3><h3><span class="txtRojo">Clases </span> de Ciclismo</h3>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- SECCION GALERIA -->
+    <section class="galeria" id="galeria">
+        <div class="contenido-seccion">
+            <div class="contenedor-titulo">
+                <div class="numero">
+                    02
+                </div>
+                <div class="info">
+                    <span class="frase">LA MEJOR EXPERIENCIA</span>
+                    <h2>GALERIA</h2>
+                </div>
+            </div>
+            <div class="fila">
+                <div class="col">
+                    <img src="/Gimnasio/img/f1.jpg" alt="">
+                </div>
+                <div class="col">
+                    <img src="/Gimnasio/img/f2.jpg" alt="">
+                </div>
+                <div class="col">
+                    <img src="/Gimnasio/img/f3.jpg" alt="">
+                </div>
+            </div>
+            <div class="fila">
+                <div class="col">
+                    <img src="/Gimnasio/img/f4.jpg" alt="">
+                </div>
+                <div class="col">
+                    <img src="/Gimnasio/img/f5.jpg" alt="">
+                </div>
+                <div class="col">
+                    <img src="/Gimnasio/img/f6.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- SECCION EQUIPO -->
+    <section class="equipo" id="equipo">
+        <div class="contenido-seccion">
+            <div class="contenedor-titulo">
+                <div class="numero">
+                    03
+                </div>
+                <div class="info">
+                    <span class="frase">LA MEJOR EXPERIENCIA</span>
+                    <h2>EQUIPO</h2>
+                </div>
+            </div>
+            <div class="fila">
+                <div class="col">
+                    <img src="/Gimnasio/img/e1.png" alt="">
+                    <div class="info">
+                        <h2>MARCOS</h2>
+                        <p><a href="/Gimnasio/login y registro/clases/Fitness.html">Fitness</a> - <a href="/Gimnasio/login y registro/clases/Crossfit.html">Crossfit</a></p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="/Gimnasio/img/e2.png" alt="">
+                    <div class="info">
+                        <h2>PATRICIA</h2>
+                        <p><a href="/Gimnasio/login y registro/clases/Boxeo.html">Boxeo</a> - <a href="/Gimnasio/login y registro/clases/Cardio.html">Cardio</a></p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="/Gimnasio/img/e3.png" alt="">
+                    <div class="info">
+                        <h2>JUAN</h2>
+                        <p><a href="/Gimnasio/login y registro/clases/Pilates.html">Pilates</a> - <a href="/Gimnasio/login y registro/clases/Ciclismo.html">Cilismo</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- SECCION MEMBRESIA -->
+    <section class="membresia" id="membresia">
+        <div class="contenido-seccion">
+            <div class="contenedor-titulo">
+            <div class="numero">
+                04
+            </div>
+            <div class="info">
+                <span class="frase">LA MEJOR EXPERIENCIA</span>
+                <h2>MEMBRESIA</h2>
+            </div>
+        </div>
+    <div class="plans">
+        <!-- Standard Plan -->
+        <div class="plan">
+            <h2>ESTANDAR</h2>
+            <ul>
+                <li>✅ Acceso al piso del gimnasio y equipamiento estándar.</li>
+                <li>✅ Clases grupales de fitness: yoga, zumba, pilates.</li>
+                <li>✅ Consultas de fitness gratuitas.</li>
+                <li>✅ Vestuarios y duchas.</li>
+                <li>✅ Orientación nutricional y snacks.</li>
+                <li>✅  Descuentos para miembros en mercancías.</li>
+            </ul>
+            <p class="price">$30/mes</p>
+        </div>
+
+        <!-- Professional Plan -->
+        <div class="plan">
+            <h2>PROFESIONAL</h2>
+            <ul>
+                <li>✅ Instalaciones de membresía estándar incluidas.</li>
+                <li>✅ Reserva prioritaria para entrenamiento personal.</li>
+                <li>✅ Acceso a equipos avanzados.</li>
+                <li>✅ Consultas de fitness gratuitas.</li>
+                <li>✅ Eventos y talleres exclusivos para miembros.</li>
+                <li>✅ Descuentos en servicios adicionales.</li>
+            </ul>
+            <p class="price">$45/mes</p>
+        </div>
+
+        <!-- Ultimate Plan -->
+        <div class="plan">
+            <h2>ULTIMATE</h2>
+            <ul>
+                <li>✅ Instalaciones estándar y profesionales incluidas.</li>
+                <li>✅ Acceso ilimitado a servicios premium.</li>
+                <li>✅ Estacionamiento reservado o servicio de valet.</li>
+                <li>✅ Clases premium de fitness gratuitas.</li>
+                <li>✅ Planes de entrenamiento personalizados.</li>
+                <li>✅ Acceso prioritario a pases de invitados y eventos.</li>
+            </ul>
+            <p class="price">$60/mes</p>
+        </div>
+    </div>
+</div>
+    <footer>
+        <div class="info">
+            <p>2023 - <span class="txtRojo">Forgue Titans</span> Todos los derechos reservados</p>
+        </div>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
