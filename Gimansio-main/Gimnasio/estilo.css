@@ -473,6 +473,20 @@ ul li {
     font-weight: bold;
     margin: 20px 0;
 }
+button {
+padding: 15px 30px;
+font-size: 18px;
+background: #28a745;
+color: white;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+}
+
+
+button:hover {
+background: #218838;
+}
 
 /* *********** */
 /* FOOTER */

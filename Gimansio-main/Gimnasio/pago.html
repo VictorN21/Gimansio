@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Membresías - Pago</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #0b132b;
+      color: #fff;
+    }
+
+    .container { text-align: center; }
+
+    .planes {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .plan {
+      background: #fff;
+      color: #000;
+      padding: 25px;
+      border-radius: 15px;
+      width: 240px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.3);
+    }
+
+    .plan h2 { margin-bottom: 10px; }
+
+    .precio {
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      background: #e10600;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover { background: #b10500; }
+
+    /* MODAL */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .modal-content {
+      background: #fff;
+      color: #000;
+      padding: 30px 40px;
+      border-radius: 12px;
+      font-size: 20px;
+      animation: pop .3s ease;
+    }
+
+    @keyframes pop {
+      from { transform: scale(.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* ÉXITO */
+    #exito {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .check {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 6px solid #2ecc71;
+      position: relative;
+      animation: scale .5s ease;
+    }
+
+    .check::after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 60px;
+      border-right: 6px solid #2ecc71;
+      border-bottom: 6px solid #2ecc71;
+      transform: rotate(45deg);
+      left: 42px;
+      top: 20px;
+    }
+
+    @keyframes scale {
+      from { transform: scale(0); }
+      to { transform: scale(1); }
+    }
+
+    .membresia{
+    color: #fff;
+    background:linear-gradient( rgba(0, 14, 41, 0.6), rgba(0, 7, 78, 0.7)),url(img/fondo-galeria.jpg);
+    background-size: cover;
+    background-position: center center;
+    padding: 100px 0;
+}
+.membresia .contenedor-titulo{
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin: auto;
+}
+.membresia .contenedor-titulo .numero{
+    color: #ff1133;
+    font-weight: bold;
+    display: block;
+    font-size: 5rem;
+}
+.membresia .contenedor-titulo .info{
+    margin-left: 30px;
+}
+.membresia .contenedor-titulo .info .frase{
+    color: #ff1133;
+}
+.membresia .contenedor-titulo .info h2{
+    font-size: 3rem;
+}
+.membership-container {
+    padding: 50px 20px;
+    background-color: #dde1e9;
+    color: #fff;
+    background-size: cover;
+    background-position: center center;
+    padding: 100px 0;
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+/* Plans Grid */
+.plans {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    color: #000;
+}
+
+/* Plan Cards */
+.plan {
+    background: white;
+    padding: 30px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+}
+
+
+h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 10px 0;
+    font-size: 14px;
+}
+  </style>
+</head>
+<body>
+
+<div class="container" id="pago">
+  <h1>Membresías</h1>
+  <div class="planes">
+
+    <div class="plan">
+      <h2>Estándar</h2>
+       <ul>
+                <li>✅ Acceso al piso del gimnasio y equipamiento estándar.</li>
+                <li>✅ Clases grupales de fitness: yoga, zumba, pilates.</li>
+                <li>✅ Consultas de fitness gratuitas.</li>
+                <li>✅ Vestuarios y duchas.</li>
+                <li>✅ Orientación nutricional y snacks.</li>
+                <li>✅  Descuentos para miembros en mercancías.</li>
+            </ul>
+      <div class="precio">$30/mes</div>
+      <button onclick="pagar('Estándar')">Pagar</button>
+    </div>
+
+    <div class="plan">
+      <h2>Profesional</h2>
+       <ul>
+                <li>✅ Instalaciones de membresía estándar incluidas.</li>
+                <li>✅ Reserva prioritaria para entrenamiento personal.</li>
+                <li>✅ Acceso a equipos avanzados.</li>
+                <li>✅ Consultas de fitness gratuitas.</li>
+                <li>✅ Eventos y talleres exclusivos para miembros.</li>
+                <li>✅ Descuentos en servicios adicionales.</li>
+            </ul>
+      <div class="precio">$45/mes</div>
+      <button onclick="pagar('Profesional')">Pagar</button>
+    </div>
+
+    <div class="plan">
+      <h2>Ultimate</h2>
+       <ul>
+                <li>✅ Instalaciones estándar y profesionales incluidas.</li>
+                <li>✅ Acceso ilimitado a servicios premium.</li>
+                <li>✅ Estacionamiento reservado o servicio de valet.</li>
+                <li>✅ Clases premium de fitness gratuitas.</li>
+                <li>✅ Planes de entrenamiento personalizados.</li>
+                <li>✅ Acceso prioritario a pases de invitados y eventos.</li>
+            </ul>
+      <div class="precio">$60/mes</div>
+      <button onclick="pagar('Ultimate')">Pagar</button>
+    </div>
+
+  </div>
+</div>
+
+<div class="container" id="exito">
+  <div class="check"></div>
+  <h2 id="textoExito"></h2>
+  <p>Redirigiendo...</p>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-content" id="modalText"></div>
+</div>
+
+<script>
+  function pagar(plan) {
+    const modal = document.getElementById('modal');
+    const modalText = document.getElementById('modalText');
+    const textoExito = document.getElementById('textoExito');
+
+    modalText.innerText = `Pago ${plan} realizado ✔`;
+    textoExito.innerText = `Membresía ${plan} activada`;
+
+    modal.style.display = 'flex';
+
+    // Mostrar check
+    setTimeout(() => {
+      document.getElementById('pago').style.display = 'none';
+      document.getElementById('exito').style.display = 'flex';
+    }, 300);
+
+    // Ocultar modal
+    setTimeout(() => {
+      modal.style.display = 'none';
+    }, 2000);
+
+    // Redirigir tras 3 segundos
+    setTimeout(() => {
+      window.location.href = 'login y registro/index.html';
+    }, 3000);
+  }
+</script>
+
+</body>
+</html>
